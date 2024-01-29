@@ -6,6 +6,8 @@ Install dependencies:
 yarn install
 ```
 
+Initialize PostgreSQL database with docker:
+
 ```sh
 docker-compose up
 ``````
