@@ -1,0 +1,2 @@
+FROM postgres
+RUN echo "CREATE DATABASE challenge_shadow;" >> /docker-entrypoint-initdb.d/init.sql
