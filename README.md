@@ -24,7 +24,7 @@ Under the `server/` folder, we provide an Express app with 2 endpoints:
 The data is stored in a seeded PostgreSQL database with one project with UUID `b7823232-81a9-4cd8-a3fc-63dda206d63f` and a few posts for this project.
 Please, see instructions in `server/README.md` for running that locally.
 
-**Optional task**: add an endpoint to... TODO
+**Optional task**: add an endpoint to get a single post by UUID.
 
 ## What we're looking for
 
