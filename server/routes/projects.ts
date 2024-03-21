@@ -14,9 +14,9 @@ router.get('/:projectId', async (req, res) => {
     client = await pool.connect();
 
     const projectId = req.params.projectId;
-  
+
     const projectQuery = await client.query(
-      "SELECT * FROM project WHERE id = $1",
+      'SELECT * FROM project WHERE id = $1',
       [projectId],
     );
     if (projectQuery.rows.length === 1) {
@@ -37,11 +37,11 @@ router.get('/:projectId/posts', async (req, res) => {
     client = await pool.connect();
 
     const projectId = req.params.projectId;
-    const limit = req.query.limit;
-    const offset = req.query.offset;
-  
+    const limit = req.query.limit as string;
+    const offset = req.query.offset as string;
+
     const postsQuery = await client.query(
-      "SELECT * FROM post WHERE project_id = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3",
+      'SELECT * FROM post WHERE project_id = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3',
       [projectId, limit, offset],
     );
 
@@ -63,6 +63,7 @@ type Project = {
   created_at: Date;
   name: string;
 };
+
 function projectToCamelCase(project: Project) {
   return {
     id: project.id,
@@ -78,6 +79,7 @@ type Post = {
   title: string;
   comment: string;
 };
+
 function postToCamelCase(post: Post) {
   return {
     id: post.id,
