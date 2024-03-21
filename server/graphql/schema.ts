@@ -1,11 +1,12 @@
 import { GraphQLSchema, GraphQLObjectType } from 'graphql';
-import { projectById } from './queries';
+import { projectById, postsByProjectId } from './queries';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Query',
     fields: {
       projectById,
+      postsByProjectId,
     },
   }),
 });
