@@ -1,12 +1,8 @@
 import { Router } from 'express';
-import { Pool, PoolClient } from 'pg';
+import { PoolClient } from 'pg';
+import pool from '../database/dbPool';
 
 const router = Router();
-const pool = new Pool({
-  connectionString:
-    process.env.DATABASE_URL ||
-    'postgres://postgres:password@localhost:5432/challenge',
-});
 
 router.get('/:projectId', async (req, res) => {
   let client: PoolClient;
