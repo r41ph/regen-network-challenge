@@ -1,5 +1,5 @@
 import { GraphQLSchema, GraphQLObjectType } from 'graphql';
-import { projectById, postsByProjectId } from './queries';
+import { projectById, postsByProjectId, postById } from './queries';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -7,6 +7,7 @@ const schema = new GraphQLSchema({
     fields: {
       projectById,
       postsByProjectId,
+      postById,
     },
   }),
 });

@@ -57,3 +57,29 @@ export async function getPostsByProjectId(
     if (client) client.release();
   }
 }
+
+export async function getPostById(postId: string): Promise<Post> {
+  let client: PoolClient;
+  try {
+    client = await pool.connect();
+
+    const projectQuery = await client.query(
+      'SELECT * FROM post WHERE id = $1',
+      [postId],
+    );
+
+    if (projectQuery.rows.length) {
+      return {
+        id: projectQuery.rows[0].id,
+        project_id: projectQuery.rows[0].project_id,
+        title: projectQuery.rows[0].title,
+        comment: projectQuery.rows[0].comment,
+        created_at: projectQuery.rows[0].created_at,
+      };
+    } else {
+      throw new Error('Project not found');
+    }
+  } finally {
+    if (client) client.release();
+  }
+}
