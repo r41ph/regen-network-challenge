@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import { Pool, PoolClient } from 'pg';
+import { PoolClient } from 'pg';
+import pool from '../database/dbPool';
+import { Project } from '../types/project';
+import { Post } from '../types/post';
 
 const router = Router();
-const pool = new Pool({
-  connectionString:
-    process.env.DATABASE_URL ||
-    'postgres://postgres:password@localhost:5432/challenge',
-});
 
 router.get('/:projectId', async (req, res) => {
   let client: PoolClient;
@@ -58,12 +56,6 @@ router.get('/:projectId/posts', async (req, res) => {
   }
 });
 
-type Project = {
-  id: string;
-  created_at: Date;
-  name: string;
-};
-
 function projectToCamelCase(project: Project) {
   return {
     id: project.id,
@@ -71,14 +63,6 @@ function projectToCamelCase(project: Project) {
     name: project.name,
   };
 }
-
-type Post = {
-  id: string;
-  created_at: Date;
-  project_id: string;
-  title: string;
-  comment: string;
-};
 
 function postToCamelCase(post: Post) {
   return {

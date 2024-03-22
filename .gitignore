@@ -1,1 +1,9 @@
-node_modules
+# Client
+client/.next/
+client/node_modules
+client/out/
+client/build/
+client/next-env.d.ts
+
+# Server
+server/node_modules
