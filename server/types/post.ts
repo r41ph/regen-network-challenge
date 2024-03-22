@@ -3,5 +3,6 @@ export type Post = {
   created_at: Date;
   project_id: string;
   title: string;
+  img: string;
   comment: string;
 };
