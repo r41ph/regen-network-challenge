@@ -1,35 +1,52 @@
 # Data Stream Full-stack Code Challenge
 
-A project like the ones on https://app.regen.network/projects can have a “Data Stream” consisting of one or more “Data Posts”.
+## Client
 
-This challenge consists of displaying the list of Data Posts for a project, using React and TypeScript.
+Install dependencies:
 
-The goal here is for us to get a basic understanding of how you code, so it's not meant to be very difficult. Ideally you shouldn't spend more than a few hours on it.
+```sh
+yarn install
+```
 
-## Front-end
+Run app locally on http://localhost:3000:
 
-Write a React application that displays, for a particular project, the project name and its data feed of entry posts as a reverse chronological list. There are no explicit requirements for which fields you should include in this data feed view. Feel free to go with whatever you think makes the most sense!
+```sh
+yarn dev
+```
 
-We recommend picking one of the [React-powered frameworks](https://react.dev/learn/start-a-new-react-project) popular in the community, though it's also fine if you have a different preferred way of bootstrapping a project.
+## Server
 
-Ideally your submission should involve a component-based approach, and have a responsive layout (optimising for both mobile and web views).
+Install dependencies:
 
-## Back-end
+```sh
+yarn install
+```
 
-Under the `server/` folder, we provide an Express app with 2 endpoints:
+Initialize PostgreSQL database with docker:
 
-- GET `/projects/:projectId`: get project data by `projectId`
-- GET `/projects/:projectId/posts?limit=x&offset=y`: get the list of posts by `projectId`
+```sh
+docker-compose up
+``````
 
-The data is stored in a seeded PostgreSQL database with one project with UUID `b7823232-81a9-4cd8-a3fc-63dda206d63f` and a few posts for this project.
-Please, see instructions in `server/README.md` for running that locally.
+Run initial migrations and seed database:
 
-**Optional task**: add an endpoint to get a single post by UUID.
+```sh
+. ./.env.local
+yarn init-db
+```
 
-## What we're looking for
+Run app locally on http://localhost:5000:
 
-With this challenge we're trying to get a sense of how you would architect a basic front-end application. We're not looking for anything visually innovative, but do appreciate clean design. That being said, this is a coding challenge, not a design challenge - so code readability, and clean architecture are the main things we will be paying attention to.
+```sh
+yarn dev
+```
 
-## Submission
+## Project details
 
-For submission, please send us an email with a link to your project, ideally as a github repo. Oh, and don't forget to add a nice README.md so we know how to build & run it :)
+The frontend has been built with Next.js and instead of completing the optional backend task, I have implemented GraphQL for the API. You'll see that I have implemented a few unit test too, a bit of styling using TailwindCSS, pagination for the posts and a responsive layout. On top of these, I have updated the seed.sql file to have a bit more post details for the UI.
+
+In the backend, you'll find that I have updated some dependencies to fix (at least it wasn't working for me) Prettier and ESLint as well as done some refactoring to adapt it to the GraphQL implemntation.
+
+Additionally, in a real life work project, more test should be implemented, more reusable components could be created and the respository should probably be a monorepo, among other things. 
+
+Please do not hesitate to get in touch in case you encounter any issues running the project.
