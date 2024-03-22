@@ -1,9 +1,12 @@
+import { Button } from '@/components/button/button';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        App goes here
-      </div>
-    </main>
+    <div className="grid place-items-center">
+      <Button
+        text="View project"
+        to={`/project/${'b7823232-81a9-4cd8-a3fc-63dda206d63f'}`}
+      />
+    </div>
   );
 }
