@@ -41,6 +41,7 @@ const PostType = new GraphQLObjectType({
     id: { type: GraphQLID },
     project_id: { type: GraphQLString },
     title: { type: GraphQLString },
+    img: { type: GraphQLString },
     comment: { type: GraphQLString },
     created_at: { type: GraphQLString },
   },

@@ -46,6 +46,7 @@ export async function getPostsByProjectId(
         id: post.id,
         project_id: post.project_id,
         title: post.title,
+        img: post.img,
         comment: post.comment,
         created_at: post.created_at,
       }));
@@ -73,6 +74,7 @@ export async function getPostById(postId: string): Promise<Post> {
         id: projectQuery.rows[0].id,
         project_id: projectQuery.rows[0].project_id,
         title: projectQuery.rows[0].title,
+        img: projectQuery.rows[0].img,
         comment: projectQuery.rows[0].comment,
         created_at: projectQuery.rows[0].created_at,
       };

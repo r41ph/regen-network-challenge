@@ -1,6 +1,6 @@
 export type Post = {
   id: string;
-  created_at: Date;
+  created_at: string;
   project_id: string;
   title: string;
   img: string;
